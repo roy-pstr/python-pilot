@@ -1,9 +1,9 @@
 [tool.poetry]
 name = "python-pilot"
-version = "0.0.9"
+version = "0.0.10"
 description = "A python terminal with an AI assistant"
 authors = ["Roy Pasternak <roy@larium.ai>"]
-homepage = "https://your-homepage-link.com"
+homepage = "https://github.com/roy-pstr/python-pilot"
 readme = "README.md"
 packages = [
     { include = "pypilot" },
