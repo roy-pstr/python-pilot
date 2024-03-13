@@ -1,3 +1,4 @@
+import os
 import code
 import io
 import readline # This imports all key bindings for the terminal!
@@ -158,7 +159,7 @@ class InteractiveConsoleWithHistory(code.InteractiveConsole):
         import json
         with open('console-agent.txt', 'w') as f:
             json.dump(self.history(-1), f, indent=2) # dump all history without the dump() command itself
-    
+            return os.path.abspath(f.name)
     def load(self, history_path: str):
         import json
         with open(history_path, 'r') as f:
