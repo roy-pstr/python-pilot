@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "python-pilot"
+version = "0.0.9"
+description = ""
+authors = ["Roy Pasternak <roy@larium.co>"]
+readme = "README.md"
+packages = [
+    { include = "pypilot" },
+]
+
+[tool.poetry.scripts]
+pypilot = "pypilot.cli:main"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+openai = "^1.13.3"
+python-dotenv = "^1.0.1"
+tiktoken = "^0.6.0"
+llama-cpp-python = {extras = ["server"], version = "^0.2.56", optional=true}
+numpy = "^1.26.4"
+huggingface-hub = {version = "^0.21.4", optional=true}
+
+[tool.poetry.extras]
+llama = ["llama-cpp-python", "huggingface-hub"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

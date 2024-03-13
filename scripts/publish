@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# Run pytest using poetry
+# poetry run pytest
+
+# Check the exit status of pytest
+# if [ $? -ne 0 ]; then
+#     echo "Tests failed. Please check the test results."
+#     exit 1
+# fi
+
+# echo "All tests passed successfully."
+
+# Get the current version using poetry
+current_version=$(poetry version --short)
+
+echo "Current version is: $current_version"
+
+# Prompt the user for the desired version bump
+echo "What should be the next version?"
+echo "[0] patch -> $(poetry version patch --short --dry-run)"
+echo "[1] minor -> $(poetry version minor --short --dry-run)"
+echo "[2] major -> $(poetry version major --short --dry-run)"
+
+# Determine version bump based on user choice
+while true; do
+    read -p "? User: " version_choice
+    case $version_choice in
+        0)
+            bump_type="patch"
+            break
+            ;;
+        1)
+            bump_type="minor"
+            break
+            ;;
+        2)
+            bump_type="major"
+            break
+            ;;
+        *)
+            echo "Invalid choice. Please choose 0, 1, or 2. (ctrl+c to exit)"
+            ;;
+    esac
+done
+
+poetry version $bump_type
+echo "Bumped version to $(poetry version --short)"
+
+# Update the version file
+echo "VERSION = '$(poetry version --short)'" > pypilot/version.py
+
+poetry build
+poetry publish
+
+# # Display Git repository status
+# git status
+
+# # Prompt user if they want to commit the changes
+# read -p "Do you want to commit the changes? (y/n): " commit_choice
+# if [[ $commit_choice == "y" || $commit_choice == "Y" ]]; then
+#     # Attempt to commit the version bump
+#     if git commit -am "Bump version to $new_version"; then
+#         echo "Git commit successful."
+#         # Attempt to push the commit
+#         read -p "Do you want to push the commit? (y/n): " push_choice
+#         if [[ $push_choice == "y" || $push_choice == "Y" ]]; then
+#             if git push; then
+#                 echo "Git push successful."
+#             else
+#                 echo "Git push failed."
+#             fi
+#         else
+#             echo "Commit changes without pushing."
+#         fi
+#     else
+#         echo "Git commit failed."
+#     fi
+# else
+#     echo "Changes not committed."
+# fi
