@@ -53,29 +53,29 @@ echo "VERSION = '$(poetry version --short)'" > pypilot/version.py
 poetry build
 poetry publish
 
-# # Display Git repository status
-# git status
+# Display Git repository status
+git status
 
-# # Prompt user if they want to commit the changes
-# read -p "Do you want to commit the changes? (y/n): " commit_choice
-# if [[ $commit_choice == "y" || $commit_choice == "Y" ]]; then
-#     # Attempt to commit the version bump
-#     if git commit -am "Bump version to $new_version"; then
-#         echo "Git commit successful."
-#         # Attempt to push the commit
-#         read -p "Do you want to push the commit? (y/n): " push_choice
-#         if [[ $push_choice == "y" || $push_choice == "Y" ]]; then
-#             if git push; then
-#                 echo "Git push successful."
-#             else
-#                 echo "Git push failed."
-#             fi
-#         else
-#             echo "Commit changes without pushing."
-#         fi
-#     else
-#         echo "Git commit failed."
-#     fi
-# else
-#     echo "Changes not committed."
-# fi
+# Prompt user if they want to commit the changes
+read -p "Do you want to commit the changes? (y/n): " commit_choice
+if [[ $commit_choice == "y" || $commit_choice == "Y" ]]; then
+    # Attempt to commit the version bump
+    if git commit -am "Bump version to $new_version"; then
+        echo "Git commit successful."
+        # Attempt to push the commit
+        read -p "Do you want to push the commit? (y/n): " push_choice
+        if [[ $push_choice == "y" || $push_choice == "Y" ]]; then
+            if git push; then
+                echo "Git push successful."
+            else
+                echo "Git push failed."
+            fi
+        else
+            echo "Commit changes without pushing."
+        fi
+    else
+        echo "Git commit failed."
+    fi
+else
+    echo "Changes not committed."
+fi
