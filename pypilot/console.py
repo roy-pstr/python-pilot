@@ -157,7 +157,7 @@ class InteractiveConsoleWithHistory(code.InteractiveConsole):
     def dump(self):
         import json
         with open('console-agent.txt', 'w') as f:
-            json.dump(self.history(-1)[:-1], f, indent=2) # dump all history without the dump() command itself
+            json.dump(self.history(-1), f, indent=2) # dump all history without the dump() command itself
     
     def load(self, history_path: str):
         import json
@@ -284,7 +284,6 @@ class InteractiveConsoleAgent(InteractiveConsoleWithHistory):
         parsed_answer = parser(answer, starting_separators=["```python", "```"], ending_separators=["```"])
         return parsed_answer, selection=="PythonCodeAgent"
         
-    
     def push(self, line, is_exec=False):
         """Push a line to the interpreter.
 
