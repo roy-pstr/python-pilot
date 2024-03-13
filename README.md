@@ -1,9 +1,16 @@
 # PyPilot
-A python terminal with assistant.</br>
-Use PyPilot as a regular python terminal and whenever you need the copilot assistance just write it as a comment.</br>
+A python terminal with an AI assistant.</br>
+Use it as a regular python terminal and whenever you need the copilot assistance just write it as a comment.</br>
 Don't forget to set the API KEY (supports only OPENAI for now).
 # Demo
 <img src="./assets/demo.gif" />
+
+## Features
+- Code generation inside the python terminal.
+- Your comments are used to communicate with the assistant.
+- The assistant is aware of the terminal history and locals.
+- Supports system commands from within the terminal (e.g. !pip install <package_name>).
+- Supports all OpenAI models.
 
 ## Installation
 ```bash
