@@ -10,14 +10,14 @@ from pypilot.version import VERSION as PYPILOT_VERSION
 def main(provider="openai", api_key=None):
     load_dotenv()
     api_key=api_key or os.getenv("OPENAI_API_KEY")
-    
+    model = "gpt-3.5-turbo"
     console = InteractiveConsoleAgent(
         auto_approve_llm_use=True,
         token_count_limit=2048,
         stream=True,
         agent=PythonTerminalChatAgent(
             provider=provider, 
-            model="gpt-3.5-turbo", 
+            model=model, 
             api_key=api_key, 
             # auto_select_code=True
         ),
@@ -30,9 +30,11 @@ PyPilot {PYPILOT_VERSION} - Python Terminal Agent
 - The agent is aware of the terminal history and locals.
 - Type {console.repr_custom_commands()} for custom commands.
 - Any key will approve, ctrl+c will cancel.
-{utils.add_color('- You must set API KEY to use the agent, use the set_api_key() command.', 'orange') if api_key is None else ''}""",
+{utils.add_color('- You must set API KEY to use the agent, use the set_api_key() command.', 'orange') if api_key is None else ''}
+- Language model: {provider}, {model}""",
         exitmsg="now exiting PyPilot...",
     )
+
     # print(console.history())
     # print(console.get_user_locals())
     

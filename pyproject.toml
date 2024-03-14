@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "python-pilot"
 version = "0.0.10"
-description = "A python terminal with an AI assistant"
+description = "A python terminal with coding copilot inside"
 authors = ["Roy Pasternak <roy@larium.ai>"]
 homepage = "https://github.com/roy-pstr/python-pilot"
 readme = "README.md"
