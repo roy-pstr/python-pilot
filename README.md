@@ -1,6 +1,6 @@
 # PyPilot
 A python terminal with a coding copilot inside.</br>
-This is a regular python terminal, only that your comments are used as requests from the copilot.</br>
+This is a regular python terminal, only that your comments are used as requests queries for the copilot.</br>
 Don't forget to set the API KEY (supports only OPENAI for now).
 
 ## Demo
