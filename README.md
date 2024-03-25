@@ -30,10 +30,10 @@ $ pypilot
 ```
 
 # TODO
-- add a way to use history only with headers of functions...
-- docker containers
-- add a selector step that decide what context the next llm prompt should have:
+- Add a way to use history only with headers of functions...
+- Docker containers
+- Add a selector step that decide what context the next llm prompt should have:
     - history: code executed (w/wo expressions), errors, llm requests
     - locals: vars, functions, modules
  (full terminal history, locals only) and if the output should be code or chat
-- add support in llm config file
+- Add support in llm config file
